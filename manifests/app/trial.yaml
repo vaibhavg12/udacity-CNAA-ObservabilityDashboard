@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: trial
-        image: vaibhavg12/trial:v1
+        image: vaibhavg12/trial:v3
         ports:
         - containerPort: 8080
 ---

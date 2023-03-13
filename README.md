@@ -69,21 +69,36 @@ Promql queries:
 
 TROUBLE TICKET
 
-Name:
+Name: Vaibhav Gupta
 
-Date:
+Date: March 13, 2021
 
-Subject:
+Subject: backend service star endpoint says "Method Not Allowed" error 405.
 
-Affected Area:
+Affected Area: star endpoint (<<host>>/star)
 
-Severity:
+Severity: High
 
-Description:
+Description: The Mongo database connection cannot be found. The tracer span is 792cfbb2a66c579f.
 
 
 ## Creating SLIs and SLOs
 *TODO:* We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name four SLIs that you would use to measure the success of this SLO.
+**SLOs:**
+
+1. Latency: Application responses should be served within 2000 ms per month. 
+2. Uptime: 99.95% of uptime per month
+3. Failure Rate: .05% of 40x/50x responses per month.
+4. Network Capacity: Monthly average memory usage should not exceed 700Mib.
+5. Resource Capacity: Monthly average CPU usage should be 65% or less.
+
+**SLIs:**
+
+1. Latency Report: average 1070 ms for all requests.
+2. Uptime: the average uptime for webservice is around 98%.
+3. Failure Rate: less than 1% of total requests had 50x response.
+4. Network Capacity: The average memory usage of the application is 200Mib.
+5. Resource Capacity: The average CPU usage is around 25.9%
 
 ## Building KPIs for our plan
 *TODO*: Now that we have our SLIs and SLOs, create a list of 2-3 KPIs to accurately measure these metrics as well as a description of why those KPIs were chosen. We will make a dashboard for this, but first write them down here.

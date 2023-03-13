@@ -1,0 +1,43 @@
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: backendjaegertest
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app
+  labels:
+    name: backend-app
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: vaibhavg12/backend:tracing
+          imagePullPolicy: Always
+          ports:
+            - name: backend
+              containerPort: 8081
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - port: 8081
+      targetPort: 8080
+  type: LoadBalancer

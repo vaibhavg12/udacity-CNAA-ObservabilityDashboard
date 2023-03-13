@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: vaibhavg12/myfrontend:v1
+        image: vaibhavg12/frontend:v2
         ports:
         - containerPort: 8080
 ---
