@@ -47,6 +47,17 @@ request response time: measures the amount of time a service takes to respond to
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
 
+![alt custom dash](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/custom_dashboard.png)
+
+Promql queries:
+1. Latency: sum(rate(prometheus_http_request_duration_seconds_sum[5m])) / sum(rate(prometheus_http_request_duration_seconds_count[5m]))
+2. Uptime: sum(prometheus_http_requests_total{code=~"2.*"})/sum(prometheus_http_requests_total)
+3. Failure Rate: 
+   - 40x: sum(prometheus_http_requests_total{code=~"4.*"}) / sum(prometheus_http_requests_total)
+   - 50x: sum(prometheus_http_requests_total{code=~"5.*"}) / sum(prometheus_http_requests_total)
+4. Network Capacity: rate(process_resident_memory_bytes[5m])
+5. Resource Capacity: rate(process_cpu_seconds_total[5m])
+
 ## Tracing our Flask App
 *TODO:*  We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here. Also provide a (screenshot) sample Python file containing a trace and span code used to perform Jaeger traces on the backend service.
 
