@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-app
+  name: frontend
 spec:
   replicas: 3
   selector:
@@ -14,14 +14,14 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: vaibhavg12/frontend:v2
+        image: vaibhavg12/frontend:v3
         ports:
         - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
+  name: frontend
 spec:
   selector:
     app: frontend

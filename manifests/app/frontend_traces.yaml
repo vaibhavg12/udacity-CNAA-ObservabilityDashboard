@@ -1,67 +1,59 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
-  annotations:
-    sidecar.jaegertracing.io/inject: 'true'
-    prometheus.io/scrape: "true"
-    prometheus.io/path: /metrics
-    prometheus.io/port: backendport
+  name: frontend
   labels:
-    name: backend
+    name: frontend
     release: prometheus
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: backend
+      app: frontend
   template:
     metadata:
       labels:
-        app: backend
+        app: frontend
     spec:
       containers:
-      - env:
-        - name: JAEGER_HOST
-          value: simpletest-agent.observability.svc.cluster.local
-        image: vaibhavg12/backend:tracing
+      - name: frontend
+        image: vaibhavg12/frontend:v2
         imagePullPolicy: Always
-        name: backend
         ports:
-        - name: backendport
-          containerPort: 8081
+        - name: frontendport
+          containerPort: 8080
           protocol: TCP
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend
+  name: frontend
   labels:
-    app: backend
+    app: frontend
 spec:
   selector:
-    app: backend
+    app: frontend
   ports:
-    - name: backend
+    - name: frontend
       protocol: TCP
-      port: 8081
-      targetPort: backendport
+      port: 8080
+      targetPort: frontendport
   type: LoadBalancer
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: backend
+  name: frontend
   namespace: monitoring
   labels:
-    app: backend
+    app: frontend
     release: prometheus
 spec:
   selector:
     matchLabels:
-      app: backend
+      app: frontend
   endpoints:
-  - port: backend
+  - port: frontend
     path: /metrics
     interval: 15s
   namespaceSelector:

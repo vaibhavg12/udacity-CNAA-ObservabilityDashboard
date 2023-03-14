@@ -9,11 +9,13 @@ COPY . ./
 
 ARG PROJECT_ID
 ENV PROJECT_ID ${PROJECT_ID}
+ENV PROMETHEUS_MULTIPROC_DIR /app
+ENV prometheus_multiproc_dir /app
 
-
-# Install production dependencies.
 RUN apt-get update && \
     pip install --upgrade pip && \
     pip install -r requirements.txt
 
-CMD ["gunicorn", "--access-logfile", "-", "--error-logfile", "-", "-w", "4", "-b", "0.0.0.0:8080", "app:app"]
+EXPOSE 8081
+
+CMD ["gunicorn", "--access-logfile", "-", "--error-logfile", "-", "-c", "config.py", "-w", "4", "-b", "0.0.0.0:8081", "app:app"]

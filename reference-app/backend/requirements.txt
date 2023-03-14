@@ -1,9 +1,12 @@
 Flask
+Flask-OpenTracing
+prometheus-flask-exporter
 requests
 pylint
+opentracing
+jaeger-client
+Flask-Cors
 gunicorn
 pymongo
 Flask-PyMongo
-Flask-OpenTracing
-opentracing
-jaeger-client
+prometheus-client
