@@ -90,50 +90,26 @@ Description: method not allowed for star api. The tracer span is 955b9083eede074
 *TODO:* We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name four SLIs that you would use to measure the success of this SLO.
 **SLOs:**
 
-1. Latency: Application responses should be served within 2000 ms per month. 
-2. Uptime: 99% of uptime per month
-3. Failure Rate: .05% of 40x/50x responses per month.
-4. Network Capacity: the network must be able to serve upto 10Mb data per month
-5. Resource Capacity: Monthly average CPU usage should be 65% or less
-
-**SLIs:** 
-
-(All numbers are for month of februaury 2023)
-1. Latency Report: average 1150 ms for all requests.
-2. Uptime: the average uptime for webservice is around 99.5%.
-3. Failure Rate: less than 1% of total requests had 50x response.
-4. Network Capacity: average data served by network was around 5.3Mb
-5. Resource Capacity: The average CPU usage is around 25.9%
+1. Latency: The response time of the 90% requests should be less than 30ms per month. 
+2. Uptime: There must be atleast 99% uptime per month.
+3. Failure Rate: More than 99% of all requests must execute without any errors.
+4. Resource usage: The usage of CPU and RAM must not exceed 80% per month.
 
 ## Building KPIs for our plan
 *TODO*: Now that we have our SLIs and SLOs, create a list of 2-3 KPIs to accurately measure these metrics as well as a description of why those KPIs were chosen. We will make a dashboard for this, but first write them down here.
 
-1. It took an average of 1070 ms for incoming requests to be served.
-   - Monthly traffic - indicates the number of requests served
-   - Monthly uptime - indicates the total usability
-   - Latency - indicates average response time.
-2. the average uptime for webservice is around 98%.
-   - Monthly traffic - indicates the number of requests served
-   - Monthly uptime - indicates the total usability
-   - 20x code reponses - indicates general availability
-3. Less than 1% of the total incoming requests had 40x/50x responses
-   - Monthly downtime - tells the time period for which serivce was not available
-   - Errors per month - tells the failure rate (errors) of application
-4. Average data served by network was around 5.3Mb
-   - Monthly memory usage of pod used by the application - indicates average memory is used by the source pod of the application.
-   - Monthly memory usage of all the pods -  indicates average memory used by all the pods required to run the application.
-5. The average CPU usage of the application is 25.9%
-   - Monthly memory usage of pod used by the application - indicates average memory is used by the source pod of the application.
-   - Monthly memory usage of all the pods -  indicates average memory used by all the pods required to run the application.
+1. Uptime : Given our uptime must be at least 99%, the Uptime KPI helps to measure it.
+2. Error Rate : Since more than 99% of all requests must execute without any errors, this KPI helps to see the rate of errors in the application.
+3. Resource capcity: This KPI was chosen because the usage of CPU and RAM must not exceed 90% per month. Resource Capacity KPI allows us to monitor their consumption.
 
 ## Final Dashboard
 *TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.  
 
 ![alt final dash](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/final_dashboard.png)
 
-1. Latency panel - it shows the average response time of the application per request.  this represents the 20x/30x (successful) responses.
-2. Uptime panel - shows the availability of application in terms of successful (20x/30x) responses 
-3. 40x requests panel - shows a ratio of 40x responses to total responses.
-5. 50x requests panel - shows a ratio of 40x responses to total responses.
-4. CPU Usage panel - it is an indicator of the avg CPU (memory) usage of the different containers.
-5. Network Capacity - shows average data processed by the system
+1. Memory Utlilization: shows the percentage memory(RAM) used by our applicaiton 
+2. CPU Utlilization: shows the percentage CPU used by our applicaiton 
+3. Server Uptime: shows the avg uptime of our application 
+4. Average Response Time: shows the average latency of our application 
+5. Error Responses : shows the ratio of error (40x/50x) HTTP responses to total HTTP responses as a percentage
+6. Successful Responses : shows the ratio of successful (20x/30x) HTTP responses to total HTTP responses as a percentage
