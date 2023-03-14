@@ -52,11 +52,17 @@ request response time: measures the amount of time a service takes to respond to
 ## Tracing our Flask App
 *TODO:*  We will create a Jaeger span to measure the processes on the backend. Once you fill in the span, provide a screenshot of it here. Also provide a (screenshot) sample Python file containing a trace and span code used to perform Jaeger traces on the backend service.
 
+![alt tracing in flask app](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/jaeger_span_backend_app.png)
+
 ## Jaeger in Dashboards
 *TODO:* Now that the trace is running, let's add the metric to our current Grafana dashboard. Once this is completed, provide a screenshot of it here.
 
+![alt tracing in flask app](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/grafana_source_jaeger_backend.png)
+
 ## Report Error
 *TODO:* Using the template below, write a trouble ticket for the developers, to explain the errors that you are seeing (400, 500, latency) and to let them know the file that is causing the issue also include a screenshot of the tracer span to demonstrate how we can user a tracer to locate errors easily.
+
+![alt tracing in flask app](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/jaeger_ui.png)
 
 TROUBLE TICKET
 
@@ -71,7 +77,6 @@ Affected Area: star endpoint (<<host>>/star)
 Severity: High
 
 Description: The Mongo database connection cannot be found. The tracer span is 792cfbb2a66c579f.
-
 
 ## Creating SLIs and SLOs
 *TODO:* We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name four SLIs that you would use to measure the success of this SLO.
@@ -115,6 +120,8 @@ Description: The Mongo database connection cannot be found. The tracer span is 7
 
 ## Final Dashboard
 *TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.  
+
+![alt final dash](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/final_dashboard.png)
 
 1. Latency panel - it shows the average response time of the application per request.  this represents the 20x/30x (successful) responses.
 2. Uptime panel - shows the availability of application in terms of successful (20x/30x) responses 
