@@ -54,15 +54,23 @@ request response time: measures the amount of time a service takes to respond to
 
 ![alt tracing in flask app](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/jaeger_span_backend_app.png)
 
+![alt jaeger ui traces](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/jaeger_ui.png)
+
+![alt jaeger ui hompage trace](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/jaeger_ui_homepage_trace.png)
+
+![alt jaeger ui api trace](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/jaeger_ui_api_trace.png)
+
 ## Jaeger in Dashboards
 *TODO:* Now that the trace is running, let's add the metric to our current Grafana dashboard. Once this is completed, provide a screenshot of it here.
 
-![alt tracing in flask app](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/grafana_source_jaeger_backend.png)
+![alt jaeger grafana](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/grafana_source_jaeger_backend.png)
+
+![alt jaeger grafana list](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/grafana_source_jaeger_backend_2.png)
 
 ## Report Error
 *TODO:* Using the template below, write a trouble ticket for the developers, to explain the errors that you are seeing (400, 500, latency) and to let them know the file that is causing the issue also include a screenshot of the tracer span to demonstrate how we can user a tracer to locate errors easily.
 
-![alt tracing in flask app](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/jaeger_ui.png)
+![alt tracing in flask app](https://github.com/vaibhavg12/udacity-CNAA-ObservabilityDashboard/blob/master/answer-img/jaeger_ui_star_trace_405.png)
 
 TROUBLE TICKET
 
@@ -76,7 +84,7 @@ Affected Area: star endpoint (<<host>>/star)
 
 Severity: High
 
-Description: The Mongo database connection cannot be found. The tracer span is 792cfbb2a66c579f.
+Description: method not allowed for star api. The tracer span is 955b9083eede0743.
 
 ## Creating SLIs and SLOs
 *TODO:* We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name four SLIs that you would use to measure the success of this SLO.
